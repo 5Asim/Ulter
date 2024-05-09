@@ -9,7 +9,7 @@ const CameraComponent = () => {
     const [showCamera, setShowCamera] = useState<boolean>(false);
 
     useEffect(() => {
-        setShowCamera(isMobileDevice());
+        setShowCamera(true);
     }, []);
 
     const startCamera = async () => {
