@@ -4,19 +4,26 @@ import { CropCard } from "../components/cards/CropCard";
 import Crop1 from "../assets/crop1.jpeg";
 import CameraComponent from "../components/camera/CameraComponent";
 import { UploadForm } from "../components/upload/UploadForm";
+import { CameraButton } from "../components/buttons/camera";
 
 export default function Health() {
     const [showUploadForm, setShowUploadForm] = useState(false);
+    const [showCamera, setShowCamera] = useState(false);
 
     const handleUploadClick = () => {
         setShowUploadForm(true);
     };
+    const handleCameraClick = () => {
+        setShowCamera(true);
+    };
+
 
     return(
         <div className="mt-8">
             <div className="flex justify-end gap-4">
                 <Upload onClick={handleUploadClick}/>
-                <CameraComponent/>
+                <CameraButton onClick={handleCameraClick}/>
+                {showCamera && <CameraComponent isActive={showCamera}/>}
             </div>
             <div>
 		{showUploadForm && <UploadForm/>}

@@ -1,28 +1,44 @@
 import { useRef, useState, useEffect } from 'react';
 
-const CameraComponent = () => {
+interface CameraComponentProps {
+    isActive: boolean; // Prop to control camera activation
+}
+
+const CameraComponent = ({ isActive }: CameraComponentProps) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [image, setImage] = useState<string>('');
-    const [showCamera, setShowCamera] = useState<boolean>(false);
 
     useEffect(() => {
-        setShowCamera(true);
-    }, []);
+        if (isActive) {
+            startCamera();
+        } else {
+            stopCamera();
+        }
+    }, [isActive]);
 
     const startCamera = async () => {
         try {
             const constraints = {
                 video: {
-                    width: { ideal: 1280 }, // You can specify 'ideal' for better device compatibility
-                    height: { ideal: 720 },
-                    facingMode: "environment" // This should select the back camera on most devices
+                    width: window.screen.width,
+                    height: window.screen.height,
+                    facingMode: "environment"
                 }
             };
             const stream = await navigator.mediaDevices.getUserMedia(constraints);
-            if (videoRef.current) videoRef.current.srcObject = stream;
+            if (videoRef.current) {
+                videoRef.current.srcObject = stream;
+            }
         } catch (error) {
             console.error('Error accessing the camera:', error);
+        }
+    };
+
+    const stopCamera = () => {
+        if (videoRef.current && videoRef.current.srcObject) {
+            const tracks = (videoRef.current.srcObject as MediaStream).getTracks();
+            tracks.forEach(track => track.stop());
         }
     };
 
@@ -40,17 +56,12 @@ const CameraComponent = () => {
         }
     };
 
-    if (!showCamera) {
-        return null;
-    }
-
     return (
         <div>
             <video ref={videoRef} autoPlay playsInline style={{ width: '100vw', height: '100vh', objectFit: 'cover' }}></video>
-            <button onClick={startCamera}>Start Camera</button>
             <button onClick={takePicture}>Take Picture</button>
             <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
-            {image && <img src={image} alt="Captured" style={{ display: 'block', marginTop: '10px' }} />}
+            {image && <img src={image} alt="Captured" style={{ width: '10px', height: '10px', objectFit: 'cover' }} />}
         </div>
     );
 };
