@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-import { isMobileDevice } from '../../utils/helpers'; 
 
 const CameraComponent = () => {
     // Specify the type of elements these refs will hold
