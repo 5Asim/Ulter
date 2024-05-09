@@ -16,6 +16,10 @@ export default function Health() {
     const handleCameraClick = () => {
         setShowCamera(true);
     };
+    const handleImageSubmit = (image:string) => {
+        console.log('Submitted image:', image);
+        // Handle image submission logic here, e.g., send to server or process further
+    };
 
 
     return(
@@ -23,7 +27,7 @@ export default function Health() {
             <div className="flex justify-end gap-4">
                 <Upload onClick={handleUploadClick}/>
                 <CameraButton onClick={handleCameraClick}/>
-                {showCamera && <CameraComponent isActive={showCamera} onClose={() => setShowCamera(false)} />}
+                {showCamera && <CameraComponent isActive={showCamera} onClose={() => setShowCamera(false)} onSubmit={handleImageSubmit}/>}
             </div>
             <div>
 		{showUploadForm && <UploadForm/>}
