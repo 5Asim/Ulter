@@ -23,7 +23,7 @@ export default function Health() {
             <div className="flex justify-end gap-4">
                 <Upload onClick={handleUploadClick}/>
                 <CameraButton onClick={handleCameraClick}/>
-                {showCamera && <CameraComponent isActive={showCamera}/>}
+                {showCamera && <CameraComponent isActive={showCamera} onClose={() => setShowCamera(false)} />}
             </div>
             <div>
 		{showUploadForm && <UploadForm/>}
