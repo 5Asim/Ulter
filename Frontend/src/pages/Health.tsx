@@ -30,7 +30,9 @@ export default function Health() {
                 {showCamera && <CameraComponent isActive={showCamera} onClose={() => setShowCamera(false)} onSubmit={handleImageSubmit}/>}
             </div>
             <div>
-		{showUploadForm && <UploadForm/>}
+            {showUploadForm && (
+                <UploadForm isOpen={showUploadForm} closeModal={() => setShowUploadForm(false)}/>
+            )}
                 <h1 className="m-8 text-2xl font-bold">Crops</h1>
                 <div>
                     <CropCard label="Plant" image={Crop1}/>

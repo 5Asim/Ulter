@@ -1,5 +1,5 @@
 .svg-item {
-    width: 100%;
+
     font-size: 12px;
     margin: 0 auto;
     animation: donutfade 1s;
@@ -20,7 +20,7 @@
 
 .donut-segment-2 {
     stroke: #00df9a;
-    animation: donut1 3s;
+    /* animation: donut1 3s; */
 }
 
 
@@ -96,8 +96,5 @@
 
 
 
-.svg-item {
-  max-width: 30%;
-  display: inline-block;
-}
+
 
