@@ -1,9 +1,10 @@
 import TemperatureChart from "../components/predictionChart/TemperatureChart"
+import WindSpeedChart from "../components/predictionChart/WindSpeedChart"
 
 export const Farm = () => {
 	return(
 		<div>
-			<TemperatureChart/>
+			<WindSpeedChart/>
 		</div>
 	)
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Line } from 'react-chartjs-2';
 
 import TemperatureData from "../../services/weather/temperature";
@@ -15,6 +14,7 @@ import {
 	TimeScale,
 	Filler
       } from 'chart.js';
+import TemperatureAnalysis from '../Chart/TemperatureAnalysis';
       
       ChartJS.register(
 	CategoryScale,
@@ -31,6 +31,11 @@ import {
 
 export const TemperatureChart = () => {
     const labels = TemperatureData.hourly.time.map(date => date.toLocaleString());
+    const temperatureValues = TemperatureData.hourly.temperature2m;
+
+    // Calculate average temperature
+    const totalTemperature = temperatureValues.reduce((acc, cur) => acc + cur, 0);
+    const averageTemperature = totalTemperature / temperatureValues.length;
     const data = {
         labels,
         datasets: [
@@ -43,6 +48,7 @@ export const TemperatureChart = () => {
             }
         ]
     };
+    
 
     
 
@@ -50,8 +56,10 @@ export const TemperatureChart = () => {
 
 return (
 	<div>
-		<h2>Hourly Temperature Chart</h2>
-			<Line data={data} />
+		<h2 className='text-lg font-semibold mx-10 mt-8 text-center'>Hourly Temperature Chart</h2>
+		<p className="text-center font-medium text-sm my-4">Average Temperature: {averageTemperature.toFixed(2)} °C</p>
+		<TemperatureAnalysis averageDailyTemperature={averageTemperature} />
+		<Line data={data} />
 	</div>
 );
 };
