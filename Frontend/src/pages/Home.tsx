@@ -3,7 +3,7 @@ import WindData from "../services/weather/wind";
 import HumidityData from "../services/weather/relhumidity";
 import TemperatureData from "../services/weather/temperature";
 
-export default function Home() {
+export const Home = () =>  {
 		const formattedTemperature = parseFloat(Number(TemperatureData.current.temperature2m).toFixed(2));
 		const formattedMaxTemperature = parseFloat(Number(TemperatureData.maxTemperature).toFixed(2));
 		const formattedHumidity = parseFloat(Number(HumidityData.current.relativeHumidity2m).toFixed(2));

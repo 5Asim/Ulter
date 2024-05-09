@@ -30,7 +30,7 @@ const NavBar = () => {
 					</Link>
 				))}
 			</ul>
-
+			
 			{/* Mobile Navigation Icon */}
 			<div onClick={handleNav} className='block md:hidden'>
 				{nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
