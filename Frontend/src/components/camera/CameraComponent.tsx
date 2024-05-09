@@ -24,8 +24,8 @@ const CameraComponent = ({ isActive, onClose }: CameraComponentProps) => {
         try {
             const constraints = {
                 video: {
-                    width: window.screen.width,
-                    height: window.screen.height,
+                    width: { ideal: 1920 },
+                    height: { ideal: 1080 },
                     facingMode: "environment"
                 }
             };
@@ -61,7 +61,12 @@ const CameraComponent = ({ isActive, onClose }: CameraComponentProps) => {
 
     return (
         <div className="camera-overlay">
-            <video ref={videoRef} autoPlay playsInline style={{ width: '100vw', height: '100vh', objectFit: 'cover' }}></video>
+            { image && (
+                <div className="image-preview">
+                    <img src={image} alt="Captured" />
+                </div>
+            )}
+            <video ref={videoRef} autoPlay playsInline></video>
             <div className="camera-controls">
                 <button onClick={() => onClose()} className="close-btn">
                     <FaTimes size={24} />
@@ -70,9 +75,7 @@ const CameraComponent = ({ isActive, onClose }: CameraComponentProps) => {
                     <FaCamera size={24} />
                 </button>
             </div>
-            <div>
-                {image && <img width={10} height={10} src={image} alt="Captured" className="captured-image" />}
-            </div>
+           
         </div>
     );
 };
