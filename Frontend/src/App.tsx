@@ -6,7 +6,7 @@ import Health from './pages/Health';
 import { Farm } from './pages/Farm';
 import Prediction from './pages/Prediction';
 
-import { Chat } from './pages/Chat/chat';
+// import { Chat } from './pages/Chat/chat';
 
 function App() {
 	return (
@@ -17,7 +17,7 @@ function App() {
 					<Route path="/health" element={<Health />} />
 					<Route path='/prediction' element={<Prediction/>}/>
 					<Route path='/farm' element={<Farm />} />
-					<Route path='/chat' element={<Chat />} />
+					{/* <Route path='/chat' element={<Chat />} /> */}
 				</Routes>
 		</Router>
   )
