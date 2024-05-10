@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
-import { uploadMediaContent } from '../../services/api/apiservices';
 
 export const UploadForm = ({ isOpen, closeModal }: { isOpen: boolean, closeModal: () => void }) => {
   const [error, setError] = useState('');
@@ -31,15 +30,7 @@ export const UploadForm = ({ isOpen, closeModal }: { isOpen: boolean, closeModal
     }
   }
 
-  async function handleSubmit() {
-    if(file){
-      const formData = new FormData();
-      formData.append('file', file.raw);
-      const result = await uploadMediaContent(formData);
-      if (result) {
-        alert('File uploaded successfully');
-      }
-    }
+  function handleSubmit() {
     // Implement the actual upload logic here
     console.log('Submitting file:', file);
     alert('File submitted!'); // Placeholder alert
