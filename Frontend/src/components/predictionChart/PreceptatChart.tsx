@@ -56,7 +56,7 @@ export const PrecipitationChart = () => {
 return (
 	<div>
 		<h2 className='text-lg font-semibold mx-10 mt-8 text-center'>Hourly Precipitation Chart</h2>
-		<p className="mx-10 font-medium text-sm my-4">Average Precipitation: {averagePrecipitation.toFixed(2)} mm</p>
+		<p className="mx-10 font-medium text-sm my-4">Average Precipitation: {averagePrecipitation.toFixed(4)} mm</p>
 		<PrecipitationAnalysis averageDailyPrecipitation={averagePrecipitation} />
 		<div className=''>
 		<Line data={data} />

@@ -67,7 +67,7 @@ function SensorDataComponent() {
 		labels: labels,
 		datasets: [ // Fix: change '=' to ':'
 			{
-				label: 'Temperature',
+				label: 'Soil Temperature',
 				data: temperature,
 				fill: false,
 				borderColor: 'rgb(75, 192, 192)',
@@ -83,11 +83,13 @@ function SensorDataComponent() {
 		<div className='mx-12 mt-10 flex flex-row gap-20'>
 			<div style={{"width":500}}>
 				<Line data={data1} />
+				<h1 className='font-bold text-lg text-center'>Soil Moisture</h1>
 				
 			</div>
 			<div style={{"width":500}}>
 				
 				<Line data={data2} />
+				<h1 className='font-bold text-lg text-center'>Soil Tempearture</h1>
 			</div>
 			
 			

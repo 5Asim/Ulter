@@ -9,10 +9,9 @@ const NavBar = () => {
 	};
 	const navItems = [
 		{ id: 1, text: 'Home', path: '/'  },
-		{ id: 2, text: 'Farm', path: '/farm' },
-		{ id: 3, text: 'Prediction', path: '/prediction' },
-		{ id: 4, text: 'Health', path: '/health' },
-		{ id:5, text: 'Chat', path: '/chat' }
+		{ id: 2, text: 'Prediction', path: '/prediction' },
+		{ id: 3, text: 'Crop', path: '/health' },
+		{ id:4, text: 'Chat', path: '/chat' }
 	];
 
 	return(

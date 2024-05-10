@@ -2,7 +2,6 @@ import { Donut } from "../components/donut";
 import WindData from "../services/weather/wind";
 import HumidityData from "../services/weather/relhumidity";
 import TemperatureData from "../services/weather/temperature";
-import { SensorData } from "../services/api/apiservices";
 import SensorDataComponent from "../components/predictionChart/SensoryDataChart";
 
 export const Home = () =>  {
@@ -18,13 +17,13 @@ export const Home = () =>  {
 			
 			<div className="">
 				<div className="flex flex-row justify-center">
-				<Donut value={formattedTemperature} standard={formattedMaxTemperature} unit="C" label="Temperature" />
-				<Donut value={formattedHumidity} standard={formattedMaxHumidity} unit="%" label="Humidity" />
-				<Donut value={formattedWind} standard={formattedMaxWind} unit="m/s" label="Wind" />
+				<Donut value={formattedTemperature} standard={formattedMaxTemperature} unit="C" label="Temperature" label2="तापक्रम"/>
+				<Donut value={formattedHumidity} standard={formattedMaxHumidity} unit="%" label="Humidity" label2="हावामा पानी वाष्पको मात्रा"/>
+				<Donut value={formattedWind} standard={formattedMaxWind} unit="m/s" label="Wind Speed" label2="हावाको गति" />
 				{/* <Donut value={formattedRain} standard={formattedMaxRain} unit="mm" label="Rain" /> */}
 			
 				</div>
-				<div>
+				<div className="mb-8">
 					<SensorDataComponent/>
 				</div>
 

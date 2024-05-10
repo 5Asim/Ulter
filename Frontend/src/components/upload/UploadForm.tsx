@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import { uploadMediaContent } from '../../services/api/apiservices';
 
-export const UploadForm = ({ isOpen, closeModal }: { isOpen: boolean, closeModal: () => void }) => {
+export const UploadForm = ({ isOpen, closeModal, onUploadSuccess }: { isOpen: boolean, closeModal: () => void, onUploadSuccess: () => void }) => {
   const [error, setError] = useState('');
   const [file, setFile] = useState<{ preview: string; raw: File } | null>(null);
 
@@ -38,6 +38,7 @@ export const UploadForm = ({ isOpen, closeModal }: { isOpen: boolean, closeModal
       const result = await uploadMediaContent(formData);
       if (result) {
         alert('File uploaded successfully');
+        onUploadSuccess(); 
       }
     }
     // Implement the actual upload logic here
@@ -45,6 +46,7 @@ export const UploadForm = ({ isOpen, closeModal }: { isOpen: boolean, closeModal
     alert('File submitted!'); // Placeholder alert
     closeModal();
   }
+
 
   return (
     <ReactModal

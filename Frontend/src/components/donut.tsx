@@ -1,7 +1,7 @@
 import '../css/DonutStyles.css';
 import percentage from '../utils/percentage';
 
-export function Donut({ value, standard, unit, label }: { value: number, standard: number, unit: string, label: string }) {
+export function Donut({ value, standard, unit, label, label2 }: { value: number, standard: number, unit: string, label: string , label2:string}) {
     const percent = percentage(value, standard);
     const radius = 9;
     const circumference = 2 * Math.PI * radius;
@@ -28,7 +28,14 @@ export function Donut({ value, standard, unit, label }: { value: number, standar
                     </g>
                     <g className="donut-text donut-text-2">
                         <text y="85%" transform="translate(0, 2)">
+				
                             <tspan x="50%" textAnchor="middle" className="donut-label">{label}</tspan>
+			
+                        </text>
+			<text y="95%" transform="translate(0, 2)">
+				
+                            
+			<tspan x="50%" textAnchor="middle" className="donut-label">{label2}</tspan>
                         </text>
                     </g>
                 </svg>
